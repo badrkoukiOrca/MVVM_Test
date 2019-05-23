@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:bind="http://schemas.android.com/tools">
+    <data>
+        <variable
+            name="viewModel"
+            type="test.android.orca.com.mvvm_test.viewmodel.LoginViewModel" />
+    </data>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_centerInParent="true"
+            android:padding="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <EditText
+                android:hint="Email"
+                android:id="@+id/mail"
+                android:layout_width="300dp"
+                android:gravity="center"
+                android:afterTextChanged="@{(editable)->viewModel.afterEmailTextChanged(editable)}"
+                android:layout_height="wrap_content"/>
+            <EditText
+                android:hint="Password"
+                android:gravity="center"
+                android:id="@+id/password"
+                android:inputType="textPassword"
+                android:layout_width="300dp"
+                android:afterTextChanged="@{(editable)->viewModel.afterPasswordTextChanged(editable)}"
+                android:layout_height="wrap_content"/>
+            <Button
+                android:id="@+id/login"
+                android:text="login"
+                android:textColor="#000"
+                android:onClick="@{()->viewModel.onLoginClicked()}"
+                android:layout_width="300dp"
+                bind:toastMessage="@{viewModel.toastMessage}"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+    </RelativeLayout>
+</layout>
