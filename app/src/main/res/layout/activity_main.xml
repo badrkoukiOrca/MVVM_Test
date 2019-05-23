@@ -5,6 +5,9 @@
         <variable
             name="viewModel"
             type="test.android.orca.com.mvvm_test.viewmodel.LoginViewModel" />
+        <variable
+            name="mainActivity"
+            type="test.android.orca.com.mvvm_test.view.GlobalActivity" />
     </data>
     <RelativeLayout
         android:layout_width="match_parent"
@@ -37,6 +40,13 @@
                 android:onClick="@{()->viewModel.onLoginClicked()}"
                 android:layout_width="300dp"
                 bind:toastMessage="@{viewModel.toastMessage}"
+                android:layout_height="wrap_content" />
+            <Button
+                android:background="#766CF8"
+                android:text="INSCRIPTION"
+                android:textColor="#FFF"
+                android:onClick="@{()->viewModel.startNewActivity(mainActivity.getAppContext())}"
+                android:layout_width="300dp"
                 android:layout_height="wrap_content" />
         </LinearLayout>
     </RelativeLayout>

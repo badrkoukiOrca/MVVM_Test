@@ -10,10 +10,23 @@ public class User {
     private String email ;
 
     @NonNull
+    private  String name ;
+
+    @NonNull
+    private String lastName ;
+
+    @NonNull
     private String password ;
 
     public User(@NonNull String email, @NonNull String password) {
         this.email = email;
+        this.password = password;
+    }
+
+    public User(@NonNull String email, @NonNull String name, @NonNull String lastName, @NonNull String password) {
+        this.email = email;
+        this.name = name;
+        this.lastName = lastName;
         this.password = password;
     }
 
@@ -35,8 +48,35 @@ public class User {
         this.password = password;
     }
 
+    @NonNull
+    public String getName() {
+        return name;
+    }
+
+    public void setName(@NonNull String name) {
+        this.name = name;
+    }
+
+    @NonNull
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(@NonNull String lastName) {
+        this.lastName = lastName;
+    }
+
     public boolean isInputDataValid(){
         return  !TextUtils.isEmpty(getEmail()) && Patterns.EMAIL_ADDRESS.matcher(getEmail()).matches() && getPassword().length() > 5 ;
+    }
+
+    public boolean Testuser(){
+        if (this.password.equals("123") && this.name.equals("badr")  && this.lastName.equals("kouki")){
+            return  true ;
+        }
+        else{
+            return false ;
+        }
     }
 
 }

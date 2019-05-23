@@ -1,11 +1,14 @@
 package test.android.orca.com.mvvm_test.viewmodel;
 
 
+import android.content.Context;
+import android.content.Intent;
 import android.databinding.BaseObservable;
 import android.databinding.Bindable;
 
 import test.android.orca.com.mvvm_test.BR;
 import test.android.orca.com.mvvm_test.model.User;
+import test.android.orca.com.mvvm_test.view.InscriptionActivity;
 
 
 public class LoginViewModel extends BaseObservable {
@@ -17,6 +20,8 @@ public class LoginViewModel extends BaseObservable {
 
     @Bindable
     public String toastMessage = null ;
+
+
 
     public LoginViewModel() {
         this.user = new User("","") ;
@@ -40,4 +45,15 @@ public class LoginViewModel extends BaseObservable {
             notifyPropertyChanged(BR.toastMessage);
         }
     }
+
+    public void startNewActivity(Context context) {
+        Intent intent = new Intent(context, InscriptionActivity.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        context.startActivity(intent);
+    }
+
+
+
+
+
 }

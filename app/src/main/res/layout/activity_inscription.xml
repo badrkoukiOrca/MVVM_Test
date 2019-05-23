@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:bind="http://schemas.android.com/tools">
+    <data>
+        <variable
+            name="Inscri"
+            type="test.android.orca.com.mvvm_test.viewmodel.InscriViewModel"/>
+    </data>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+            <LinearLayout
+                android:padding="10dp"
+                android:layout_centerInParent="true"
+                android:orientation="vertical"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+                <EditText
+                    android:afterTextChanged="@{(editable)->Inscri.OnNameChanged(editable)}"
+                    android:gravity="center"
+                    android:hint="Name"
+                    android:layout_width="300dp"
+                    android:layout_height="wrap_content" />
+                <EditText
+                    android:afterTextChanged="@{(editable)->Inscri.OnLastNameChanged(editable)}"
+                    android:gravity="center"
+                    android:hint="Last name"
+                    android:layout_width="300dp"
+                    android:layout_height="wrap_content" />
+                <EditText
+                    android:afterTextChanged="@{(editable)->Inscri.OnPasswordChanged(editable)}"
+                    android:gravity="center"
+                    android:hint="Email"
+                    android:layout_width="300dp"
+                    android:layout_height="wrap_content" />
+                <EditText
+                    android:afterTextChanged="@{(editable)->Inscri.OnEmailChanged(editable)}"
+                    android:gravity="center"
+                    android:inputType="textPassword"
+                    android:hint="Password"
+                    android:layout_width="300dp"
+                    android:layout_height="wrap_content" />
+                <Button
+                    android:onClick="@{()->Inscri.OnClick()}"
+                    android:layout_width="300dp"
+                    android:layout_height="wrap_content"
+                    android:textColor="#000"
+                    bind:toastMessage="@{Inscri.message}"
+                    android:text="inscri" />
+            </LinearLayout>
+    </RelativeLayout>
+</layout>
